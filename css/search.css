@@ -1,0 +1,13 @@
+.card img {
+  height: 300px
+}
+.noMatchActivityDiv {
+  display: none;
+}
+.card-body img {
+  width: 20px;
+  height: 20px;
+}
+.input-group ._btnFilter {
+  z-index: 0;
+}

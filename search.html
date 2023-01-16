@@ -1,0 +1,423 @@
+<!-- <?php
+      session_start();
+      #echo "id: ".$_SESSION["id"];
+      if (!isset($_SESSION["user"]))
+       header("Location: sign-in-form.php?wronguserorpass=1");
+
+      //  if (isset($_GET["queryerror"]))
+      //   require("views/error/queryError/query-error.php");
+
+      // if (isset($_GET["setcolumntype"]))
+      //   require("views/set-data/column-type/set-column-type.php");
+
+      // if (isset($_GET["setdataincategory"]))
+      //   require("views/set-data/set-data-in-category/set-data-in-category.php");
+    ?> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="views/contents/style/main.css">
+  <link rel="stylesheet" href="views/style/main.css"> -->
+  <!-- <link rel="stylesheet" href="css/main.css"> -->
+  <!-- <link rel="stylesheet" href="css/animations.css"> -->
+  <!-- <link rel="stylesheet" href="views/contents/create/style/create.css"> -->
+  <link rel="stylesheet" href="cssOfBootstrap/bootstrap.css">
+  <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/search.css">
+
+  <title>x-Place</title>
+</head>
+
+<!-- More and Contacts Modal -->
+<div id="moreAndContactModal" class="_modal">
+  <div class="_modal-content">
+    <div class="_modal-header _modal-flex">
+      <h2 class="title"></h2>
+    </div>
+    <div class="_modal-body _modal-flex">
+      <p class="information"></p>
+      <p class="informationTwo"></p>
+    </div>
+    <div class="_modal-footer">
+      <a class="btnClose_a"><button class="btnClose moreAndContactModal"
+          onclick="changeToSamePage('search.html')">OK</button></a>
+    </div>
+  </div>
+</div>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand text-primary _link" onclick="changePageWithUsername('home.html')">x-Place</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link  _link" aria-current="page" onclick="changeToSamePage('search.html')">Procurar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link _link" aria-current="page" onclick="changePageWithUsername('post.html')">Postar</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <a href="logout.html" class="btn btn-sm btn-danger btn-logout ">Sair</a>
+            <div class="container ml-5">
+              <img src="img/user_20px.png" alt="">
+              <span class="_user"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container mt-5">
+    <div class="row justify-content-sm-center content">
+      <div class="col-md-6 col-sm-12 mt-5">
+
+        <p class="text-center">
+          <span class="alert alert-success _alert" role="alert">Procure por um evento</sapn>
+        </p>
+        <p class="">Faça uma busca por eventos do seu interesse, use a caxa de filtro abaixo</p>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <img src="img/New-Startup-idea-searching.svg" alt="" class="img _svg">
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+
+  <div class="lineOnSearch mt-5"></div>
+
+  <div class="container mt-5">
+    <div class="row justify-content-sm-center">
+      <div class="col-md-6 col-sm-6">
+        <div class="container _filter">
+          <form action="getActivity.html" method="post">
+            <div class="input-group ">
+              <span class="input-group-text" id="addon-wrapping">Filtro</span>
+              <select class="form-select selectedActivity" aria-label="Default select example" name="activity">
+                <option selected>Todos os eventos</option>
+                <option value="palestras">Palestras</option>
+                <option value="mentorias">Mentorias</option>
+                <option value="feiras">Feiras</option>
+                <option value="eventos_culturais">Eventos culturais</option>
+                <option value="cursos">Cursos</option>
+                <option value="concursos">Concursos</option>
+                <option value="outros_eventos">Outros eventos</option>
+                <option value="meus_eventos">Meus eventos</option>
+              </select>
+              <button class="btn btn-success _btnFilter" type="button" id="">Buscar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="big-line"></div> -->
+  <!-- activity -->
+  <div class="container _activity">
+    <div class="row activityBody">
+
+      <!-- no match -->
+      <div class="col-md-12 col-sm-12 noMatchActivityDiv">
+        <h1 class="text-center">
+          Desculpe, mas não foram publicados eventos relacionadas à <span class="noMatchActivitySpan"></span>
+        </h1>
+      </div>
+      <!-- no match [fim]-->
+
+      <!-- palestras -->
+      <div class="col-md-6 col-sm-12 _activity-content todos_os_eventos palestras">
+        <div class="card" style="max-width:100%">
+          <img src="img/activities/palestras/palestra de IA.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Robotizando</h5>
+            <p class="card-text" id="_1">Palestra sobre inteligência artificial onde você aprenderá mais sobre este mundo, vamos
+              atualizar você sobre as últimas novidades da inteligência artificial</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Categoria</strong> <span
+                class="alert alert-success _alert">Palestras</span></li>
+            <li class="list-group-item"><strong>Duração: </strong> <span
+                class="alert alert-success _alert">1h:30min</span></li>
+            <li class="list-group-item"><strong>Localização: </strong><span
+                class="alert alert-success _alert">UAN</span></li>
+          </ul>
+          <div class="card-body">
+            <a class="card-link btn btn-outline-primary _link" onclick="SetInformation('Mais informações','#_1')">Saber mais</a>
+            <a class="card-link btn btn-outline-primary _linl" onclick="SetInformation('Contactos','random')">Contactos</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12 _activity-content todos_os_eventos palestras">
+        <div class="card" style="max-width:100%">
+          <img src="img/activities/palestras/palestra de programação.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Code Man</h5>
+            <p class="card-text" id="_2">Palestra sobre programação onde você poderá conhecer mais sobre esta área, conhecerá
+              projetos incríveis feitos por angolanos, e saíra do evento com outra visão.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Categoria</strong> <span
+                class="alert alert-success _alert">Palestras</span></li>
+            <li class="list-group-item"><strong>Duração: </strong> <span class="alert alert-success _alert">2h</span>
+            </li>
+            <li class="list-group-item"><strong>Localização: </strong><span
+                class="alert alert-success _alert">ITEL</span></li>
+          </ul>
+          <div class="card-body">
+            <a class="card-link btn btn-outline-primary _link" onclick="SetInformation('Mais informações','#_2')">Saber mais</a>
+            <a class="card-link btn btn-outline-primary _linl" onclick="SetInformation('Contactos','random')">Contactos</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- palestras [fim]-->
+
+      <!-- mentorias -->
+      <div class="col-md-6 col-sm-12 _activity-content todos_os_eventos mentorias">
+        <div class="card" style="max-width:100%">
+          <img src="img/activities/mentorias/mentoriaGelson.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Code Masters</h5>
+            <p class="card-text" id="_3">Todos quanto quiserem receber a minha mentoria durante os 6 primeiros meses do ano essa
+              é a oportunidade de estar ligado a mim.</p>
+            <!--Venha ser programador, tenho mais de 9 anos de experiência com a matéria e posso o ajudar a dar os seus primeiros passos para não cometer os erros que cometi. Inscreva-te já -->
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Categoria</strong>: <span
+                class="alert alert-primary _alert">Mentorias</span></li>
+            <li class="list-group-item"><strong>Duração: </strong>: <span class="alert alert-primary _alert">6
+                Meses</span></li>
+            <li class="list-group-item"><strong>Localização: </strong>: <span
+                class="alert alert-primary _alert">online</span></li>
+          </ul>
+          <div class="card-body">
+            <a class="card-link btn btn-outline-warning _link" onclick="SetInformation('Mais informações','#_3')">Saber mais</a>
+            <a class="card-link btn btn-outline-warning _linl" onclick="SetInformation('Contactos','random')">Contactos</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12 _activity-content todos_os_eventos mentorias meus_eventos">
+        <div class="card" style="max-width:100%">
+          <img src="img/activities/mentorias/mentoria de forex.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Forex Experts</h5>
+            <p class="card-text" id="_4">Venha aprender Forex de uma por todas, no fim da mentoria você estará abilitado a fazer
+              dinheiro com Forex</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Categoria</strong>: <span
+                class="alert alert-primary _alert">Mentorias</span></li>
+            <li class="list-group-item"><strong>Duração: </strong>: <span class="alert alert-primary _alert">2
+                Meses</span></li>
+            <li class="list-group-item"><strong>Localização: </strong>: <span class="alert alert-primary _alert">ISPO
+                Zango</span></li>
+          </ul>
+          <div class="card-body">
+            <a class="card-link btn btn-outline-warning _link" onclick="SetInformation('Mais informações','#_4')">Saber mais</a>
+            <a class="card-link btn btn-outline-warning _linl" onclick="SetInformation('Contactos','random')">Contactos</a>
+
+            <a class="card-link btn btn-outline-danger _link" onclick="changeToSamePage('search.html')">
+              <img src="./icons/Delete2_50px.png" alt="">
+            </a>
+
+            <a class="card-link btn btn-outline-success _link" onclick="changeToSamePage('search.html')">
+              <img src="./icons/edit_property_50px.png" alt="">
+            </a>
+            
+              
+          </div>
+        </div>
+      </div>
+      <!-- mentorias [fim]-->
+
+      <!-- concursos-->
+      <div class="col-md-6 col-sm-12 _activity-content todos_os_eventos concursos">
+        <div class="card" style="max-width:100%">
+          <img src="img/activities/concursos/competição speed cuber.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Speed Cubers</h5>
+            <p class="card-text" id="_5">venha competir nessa edição do Speed Cubers e leve o prémio pra casa!</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Categoria</strong> <span
+                class="alert alert-success _alert">Concursos</span></li>
+            <li class="list-group-item"><strong>Duração: </strong> <span class="alert alert-success _alert">3
+                dias</span></li>
+            <li class="list-group-item"><strong>Localização: </strong><span class="alert alert-success _alert">Praça da
+                Independência</span></li>
+          </ul>
+          <div class="card-body">
+            <a class="_link card-link btn btn-outline-primary" onclick="SetInformation('Mais informações','#_5')">Saber mais</a>
+            <a class="card-link btn btn-outline-primary _linl" onclick="SetInformation('Contactos','random')">Contactos</a>
+          </div>
+        </div>
+      </div>
+      <!-- concursos [fim]-->
+
+      <!-- feiras-->
+      <div class="col-md-6 col-sm-12 _activity-content todos_os_eventos feiras">
+        <div class="card" style="max-width:100%">
+          <img src="img/activities/feiras/feira do livro.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Bons leitores</h5>
+            <p class="card-text" id="_6">Feira do Livro aberta para o público, venha e escolha um livro pra si e pra sua
+              família.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Categoria</strong> <span
+                class="alert alert-success _alert">Feiras</span></li>
+            <li class="list-group-item"><strong>Duração: </strong> <span class="alert alert-success _alert">3
+                dias</span></li>
+            <li class="list-group-item"><strong>Localização: </strong><span
+                class="alert alert-success _alert">Camama</span></li>
+          </ul>
+          <div class="card-body">
+            <a class="_link card-link btn btn-outline-primary" onclick="SetInformation('Mais informações','#_6')">Saber mais</a>
+            <a class="card-link btn btn-outline-primary _linl" onclick="SetInformation('Contactos','random')">Contactos</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12 _activity-content todos_os_eventos feiras meus_eventos">
+        <div class="card" style="max-width:100%">
+          <img src="img/activities/feiras/feira do livro 2.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ler é Crescer</h5>
+            <p class="card-text" id="_7">Se gosta de ler esta feira é pra si, ler ajuda a crescer, venha e volte com um livro do
+              seu gosto</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Categoria</strong> <span
+                class="alert alert-success _alert">Feiras</span></li>
+            <li class="list-group-item"><strong>Duração: </strong> <span class="alert alert-success _alert">3
+                dias</span></li>
+            <li class="list-group-item"><strong>Localização: </strong><span class="alert alert-success _alert">Candando
+                de Viana</span></li>
+          </ul>
+          <div class="card-body">
+            <a class="_link card-link btn btn-outline-primary" onclick="SetInformation('Mais informações','#_7')">Saber mais</a>
+            <a class="card-link btn btn-outline-primary _linl" onclick="SetInformation('Contactos','random')">Contactos</a>
+
+            <a class="card-link btn btn-outline-danger _link" onclick="changeToSamePage('search.html')">
+              <img src="./icons/Delete2_50px.png" alt="">
+            </a>
+
+            <a class="card-link btn btn-outline-success _link" onclick="changeToSamePage('search.html')">
+              <img src="./icons/edit_property_50px.png" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- feiras [fim]-->
+
+      <!-- cursos -->
+      <div class="col-md-6 col-sm-12 _activity-content todos_os_eventos cursos">
+        <div class="card" style="max-width:100%">
+          <img src="img/activities/cursos/curso de planejamento financeiro.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Finanças e Investimentos</h5>
+            <p class="card-text" id="_8">O curso de Finanças e Investimentos, ajuda as pessoas a perceberem como os seus
+              principais defeitos e habilidades influenciam as suas decisões financeiras</p>
+            <!--Venha ser programador, tenho mais de 9 anos de experiência com a matéria e posso o ajudar a dar os seus primeiros passos para não cometer os erros que cometi. Inscreva-te já -->
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Categoria</strong> <span class="alert alert-danger _alert">Cursos</span>
+            </li>
+            <li class="list-group-item"><strong>Duração: </strong> <span class="alert alert-danger _alert">1
+                Semana</span></li>
+            <li class="list-group-item"><strong>Localização: </strong><span
+                class="alert alert-danger _alert">online</span></li>
+          </ul>
+          <div class="card-body">
+            <a class="_link card-link btn btn-outline-primary" onclick="SetInformation('Mais informações','#_8')">Saber mais</a>
+            <a class="card-link btn btn-outline-primary _linl" onclick="SetInformation('Contactos','random')">Contactos</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12 _activity-content todos_os_eventos cursos">
+        <div class="card" style="max-width:100%">
+          <img src="img/activities/cursos/curso de operações binárias.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Operações Binárias</h5>
+            <p class="card-text" id="_9">Venha aprender Opções Binárias de uma por todas, no fim da mentoria você estará
+              abilitado a fazer
+              dinheiro com Opções Binárias </p>
+            <!--Venha ser programador, tenho mais de 9 anos de experiência com a matéria e posso o ajudar a dar os seus primeiros passos para não cometer os erros que cometi. Inscreva-te já -->
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Categoria</strong> <span class="alert alert-danger _alert">Cursos</span>
+            </li>
+            <li class="list-group-item"><strong>Duração: </strong> <span class="alert alert-danger _alert">1 Mês</span>
+            </li>
+            <li class="list-group-item"><strong>Localização: </strong><span
+                class="alert alert-danger _alert">online</span></li>
+          </ul>
+          <div class="card-body">
+            <a class="_link card-link btn btn-outline-primary" onclick="SetInformation('Mais informações','#_9')">Saber mais</a>
+            <a class="card-link btn btn-outline-primary _linl" onclick="SetInformation('Contactos','random')">Contactos</a>
+          </div>
+        </div>
+      </div>
+      <!-- cursos [fim]-->
+    </div>
+  </div>
+  <div class="lineOnSearch mt-5"></div>
+
+
+  <footer class="site-footer mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="mt-5">Redes Sociais</h3>
+          <p>
+            <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
+            <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
+            <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
+          </p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-7 text-center mb-5">
+          Copyright &copy;<script>
+            document.write(new Date().getFullYear());
+          </script> Todos os Direitos Reservados | With <i class="fa fa-heart-o" aria-hidden="true"></i> by
+          <a href="#https://fenix.com" target="_blank">
+            <span class="alert alert-primary _alert" role="alert">Fenix C.</span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="jsOfBootstrap/bootstrap.js"></script>
+  <script src="./js/getUserName.js"></script>
+  <script src="./js/changePages.js"></script>
+  <script src="./js/activitiesFilter.js"></script>
+  <script src="./js/showMoreInfo.js"></script>
+  <script src="./js/modal.js"></script>
+</body>
+
+</html>
+<!-- <i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
+  <img src="/assets/img/bootstrap.svg" alt="Bootstrap" width="32" height="32"> -->
+
+<!-- style="border:1px solid red" -->

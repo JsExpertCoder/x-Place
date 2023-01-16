@@ -1,0 +1,47 @@
+* {
+  font-family: Verdana, sans-serif;
+}
+.splashScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 500px;
+  width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 1px 6px 0 #20212447;
+}
+.splashScreen.active {
+  animation: rightToLeft .4s ease-in forwards;
+}
+.splashScreen.goLeft {
+  animation: goLeft .5s ease-out forwards;
+}
+.splashScreen .head {
+  width: 100%; height: 40%;
+  border-top-left-radius: 20px; border-top-right-radius: 20px;
+  background: #192a46; text-align: center;
+}
+.splashScreen .head p {
+  font-size: 30pt;
+}
+.splashScreen .footer {
+  border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
+  width: 100%; height: 60%; display: flex; flex-direction: column; align-items: center;
+  justify-content: space-evenly;
+}
+.splashScreen .footer p.description {
+  width: 260px; font-size: 15pt;
+  text-align: justify; color: #505050;
+}
+.splashScreen .highlight {
+  color:#0078d4; font-weight: bold;
+}
+.splashScreen .footer .btnGetStart {
+  outline: none; border: none; background: #fdfdfd; font-weight: bold;
+  padding: 8px 20px; box-shadow: 1px 1px 10px 1px #20212447;
+  color: #0078d4; border-radius: 6px; cursor: pointer; transition: all .4s ease-in-out
+}
+.splashScreen .footer .btnGetStart:hover {
+  background: #0078d4; color: #FFFFFF;
+}

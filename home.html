@@ -1,0 +1,337 @@
+<!-- <?php
+      session_start();
+      #echo "id: ".$_SESSION["id"];
+      if (!isset($_SESSION["user"]))
+       header("Location: sign-in-form.php?wronguserorpass=1");
+
+      //  if (isset($_GET["queryerror"]))
+      //   require("views/error/queryError/query-error.php");
+
+      // if (isset($_GET["setcolumntype"]))
+      //   require("views/set-data/column-type/set-column-type.php");
+
+      // if (isset($_GET["setdataincategory"]))
+      //   require("views/set-data/set-data-in-category/set-data-in-category.php");
+    ?> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="views/contents/style/main.css">
+  <link rel="stylesheet" href="views/style/main.css"> -->
+  <!-- <link rel="stylesheet" href="css/main.css"> -->
+  <!-- <link rel="stylesheet" href="css/animations.css"> -->
+  <!-- <link rel="stylesheet" href="views/contents/create/style/create.css"> -->
+  <link rel="stylesheet" href="./css/modal.css">
+  <link rel="stylesheet" href="cssOfBootstrap/bootstrap.css">
+  <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="icons/bootstrap-icons.css">
+
+  <title>x-Place</title>
+</head>
+
+<body>
+
+  <!-- Question sent Modal -->
+  <div id="modalQuestionSent" class="_modal">
+    <div class="_modal-content">
+      <div class="_modal-header _modal-flex">
+        <h2>Perguntas Enviadas</h2>
+      </div>
+      <div class="_modal-body _modal-flex">
+        <img src="img/success.png" alt="Sign up success">
+        <p class="text-center">A sua pergunta foi enviada com sucesso!</p>
+      </div>
+      <div class="_modal-footer">
+        <a class="btnClose_a"><button class="btnClose modalQuestionSent"
+            onclick="changeToSamePage('home.html')">OK</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Make a question Modal --->
+  <div id="FAQmodal" class="_modal">
+    <div class="_modal-content">
+      <div class="_modal-header _modal-flex">
+        <h2>Deixe-nos uma questão</h2>
+      </div>
+      <div class="_modal-body _modal-flex">
+        <form class="row g-3  post-form" method="post" action="getPost.html">
+          <div class="row g-2">
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInputGrid" name="activity-theme"
+                  placeholder="Seu Nome (Opcional)">
+                <label for="floatingInputGrid">Seu nome (opcional)</label>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" name="activity-theme"
+                  placeholder="Seu Nome (Opcional)">
+                <label for="floatingInputGrid">Seu email (opcional)</label>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-floating">
+                <textarea class="form-control inputToCheck" id="floatingTextarea" name="activity-desc"
+                  placeholder="Sua questão (uma ou  mais)"></textarea>
+                <label for="floatingTextarea">Sua questão (uma ou mais)</label>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-floating">
+                <textarea class="form-control" id="floatingTextarea" name="activity-desc"
+                  placeholder="Sua questão (uma ou  mais)"></textarea>
+                <label for="floatingTextarea">Deixe-nos uma sugestão (opcional</label>
+              </div>
+            </div>
+
+            <input type="button" value="Enviar" class="col-md-12 btn btn-success"
+              onclick="checkInputs('#modalQuestionSent', '#FAQmodal', 'Só podes clicar em Enviar se você deixar uma pergunta, ou clique em Fechar')">
+
+          </div>
+        </form>
+
+      </div>
+      <div class="_modal-footer">
+        <a class="btnClose_a"><button class="btnClose FAQmodal"
+            onclick="changeToSamePage('home.html')">Fechar</button></a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand text-primary _link" onclick="changeToSamePage('home.html')">x-Place</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link  _link" aria-current="page"
+                onclick="changePageWithUsername('search.html')">Procurar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link _link" aria-current="page" onclick="changePageWithUsername('post.html')">Postar</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <a href="logout.html" class="btn btn-sm btn-danger btn-logout ">Sair</a>
+            <div class="container ml-5">
+              <img src="img/user_20px.png" alt="">
+              <span class="_user"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container mt-5">
+    <div class="row justify-content-sm-center content">
+      <div class="col-md-6 col-sm-12 mt-5">
+
+        <p>
+          Na <span class="bold">x-Place</span> você <span class="alert alert-primary _alert">posta</span> e <span
+            class="alert alert-primary _alert">procura</span> por <span class="bold">eventos sociais</span>,<span
+            class="bold ">
+            mentorias</span>, <span class="bold">palestras</span> e outros eventos que agregam <span
+            class="alert alert-success _alert" role="alert">valor para a sua vida e para a </span> <span
+            class="alert alert-success _alert" role="alert">vida dos outros.</sapn>
+        </p>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <img src="img/2.svg" alt="" class="img _svg">
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+
+  <div class="line"></div>
+
+  <div class="container-fluid mt-5 mb-5">
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-6 col-md-4 actions">
+        <div class="top-actions text-center">
+          <img src="./img/Push-notifications.svg" class="_svg">
+          <span class="text-warning actions-title">Procurar</span>
+        </div>
+        <p class="actions-desc">
+          <span class="alert alert-primary _alert actions-subtitle" role="alert">Procure um evento!.</span> Faça
+          uma busca por <span class="">palestras</span>, <span class="">feiras de tecnologia</span>, <span
+            class="">eventos culturais</span> ou qualquer <span class="">outro evento.</span> </p>
+        <div class="container text-center"><a onclick="changePageWithUsername('search.html')"
+            class="btn btn-outline-success mt-5 actions-btn _link">Procurar evento</a></div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 actions">
+        <div class="top-actions text-center">
+          <img src="./img/Publish-post.svg" class="_svg">
+          <span class="text-danger actions-title">Postar</span>
+        </div>
+        <p class="actions-desc">
+          <span class="alert alert-primary _alert actions-subtitle" role="alert">Publique o seu evento!.</span> Faça
+          um post sobre sua <span class="">mentoria</span>, <span class="">palestra</span>, <span class="">evento
+            cultural</span> ou qualquer <span class="">outro evento</span>, e outros usuários da plataforma poderão
+          pesquisar pelo seu evento e obter as informações sobre o mesmo.</p>
+        <div class="container text-center">
+          <a onclick="changePageWithUsername('post.html')" class="btn btn-outline-success mb-2 actions-btn _link">Postar
+            evento</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="line"></div>
+  <!-- FAQ -->
+  <div class="container FAQ">
+    <h1 class="text-center mb-5">Perguntas Frequentes</h1>
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            Para quê serve a x-Place?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>É uma plataforma para você <strong>publicar</strong> e <strong>pesquisar</strong> por eventos socias,
+              como <span class="alert alert-primary _alert" role="alert">Palestras, Mentorias, Debates</span> e outros
+              eventos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Porquê usar a x-Place?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>Porque é uma plataforma <span class="alert alert-success _alert" role="alert">simples e poderosa.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Qual é o objectivo da x-Place?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>O objectivo da plataforma é de <span class="alert alert-warning _alert" role="alert">agregar algum valor
+                na vida dos usuários</span>.
+              <br>
+              Ajudá-los a desenvolver o seu potencial, <span class="alert alert-success _alert" role="alert">e ajudar o
+                país a desenvolver.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Quê tipos de eventos posso encontrar?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <li>Palestras</li>
+            <li>Mentorias</li>
+            <li>Feiras</li>
+            <li>Cursos</li>
+            <p> <span class="alert alert-primary _alert" role="alert">e muito mais!</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFive">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            Quê tipo de eventos posso postar?
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>Se o seu evento ajuda de alguma forma no desenvolvimento positivo e saudável
+              dos jovens e não só então você poderá postar o evento. Mas se não agregam nenhuma valor na vida do
+              próximo então você não poderá postar o evento. <span class="alert alert-danger _alert" role="alert">Tudo
+                que for sexualmente explícito será rejeitado</span>.
+              <br>
+              Todo post é avaliado pela nossa equipe, que decide o que é ou não publicado na plataforma.
+            </p>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-success mt-2" onclick="openModal('#FAQmodal')"><i class="bi-question-circle"></i> Deixar uma
+        questão</a>
+    </div>
+  </div>
+
+
+  <footer class="site-footer mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="mt-5">Redes Sociais</h3>
+          <p>
+            <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
+            <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
+            <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
+          </p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-7 text-center mb-5">
+          Copyright &copy;<script>
+            document.write(new Date().getFullYear());
+          </script> Todos os Direitos Reservados | With <i class="fa fa-heart-o" aria-hidden="true"></i> by
+          <a href="https://fenix.com" target="_blank">
+            <span class="alert alert-primary _alert" role="alert">Fenix C.</span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="jsOfBootstrap/bootstrap.js"></script>
+  <script src="./js/getUserName.js"></script>
+  <script src="./js/changePages.js"></script>
+  <script src="./js/modal.js"></script>
+  <script src="./js/validationOfPost.js"></script>
+</body>
+
+</html>
+<!-- <i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
+  <img src="/assets/img/bootstrap.svg" alt="Bootstrap" width="32" height="32"> -->
+
+<!-- style="border:1px solid red" -->

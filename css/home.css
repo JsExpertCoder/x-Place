@@ -1,0 +1,362 @@
+/* .flex {
+  display: flex; align-items: center;
+}
+.column {
+  flex-direction: column;
+}
+.light {
+  color: #0078d4; font-weight: bold; font-size: 18pt;
+}
+.main {
+  position: absolute;
+  width: 100%; height: 100%;
+}
+section.head{
+  width: 100%; height: 20%;
+  justify-content: space-between;
+  border-bottom: 2px solid #dadce0;
+}
+section.head section {
+   margin-right: 20px;
+  width: auto; height: 100%;
+  justify-content: space-between;
+}
+div.logo {
+  margin-left: 20px;
+}
+div.logo img{
+  width: 50px
+}
+div.logo p {
+  color: #0078d4; font-weight: bold; font-size: 18pt;
+}
+section.body {
+  width: 100%; height: 100%;
+}
+
+.img-perfil {
+  align-items: flex-end;
+}
+.img-perfil img:nth-last-child(2) {
+  width: 50px; height: 50px;
+  border-radius: 100%;
+}
+.img-setting {
+  width: 25px; height: 25px;
+  border-radius: 100%; background: #0078d4;
+  justify-content: center; margin-left: -10px;
+}
+.img-setting  a {
+   border-radius: 100%;
+   margin-top: 2px
+}
+
+nav {
+  width: 20%; height: 100%;
+
+}
+ul {
+  width: auto; height: auto;
+  box-shadow: 0 1px 6px 0 #20212447;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+li {
+  padding: 20px 10px 20px 0px;
+}
+
+.icon-items {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: auto;height: 40px;
+}
+.icon-items:hover {
+  box-shadow: 0 1px 6px 0 #20212447;
+}
+.icon-items img{
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.icon-items p{
+  padding-right: 10px;
+}
+.logout {
+  margin-top: 20px;
+  box-shadow: 0 1px 6px 0 #20212447;
+}
+.top-logout {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.content {
+  box-shadow: 0 1px 6px 0 #20212447;
+  width: 80%; height: 90%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  animation: rightToLeft .2s ease-in forwards;
+} */
+/* #5f6368 shadow: #7f7f7f*/
+
+a {
+  text-decoration: none;
+}
+nav {
+  background-color: #d3e5ffab;
+}
+.navbar-brand, .ask {
+  font-weight: bold;
+}
+.ask {
+  text-decoration: none;
+  margin-right: 1rem !important;
+}
+.separator {
+  color: #0a58ca;
+  font-weight: bold;
+}
+.content {
+  margin: 0 auto;
+}
+.content p {
+  margin: 0 auto;
+  font-size: 1.6rem;
+  text-align: justify;
+}
+._border  {
+  border: 1px solid red;
+}
+.blue {
+  color: #0d6efd;
+}
+.green {
+ color: #2bf37e
+}
+.red {
+  color: #d63384
+}
+.borderBottom {
+  border-bottom: 2px solid #0d6efd;
+}
+.bold {
+  font-weight: bold;
+}
+.utilities {
+  padding: 1px;
+  font-weight: normal;
+  border-left: 4px solid #20c997;
+  border-radius: 5px;
+}
+.f {
+  margin-top: 30px;
+}
+ .line {
+  width: 100px;
+  height: 4px;
+  border-radius: 20px;
+  background: #fd6370;
+  margin: 0 auto;
+}
+.lineOnSearch {
+  width: 100px;
+  height: 4px;
+  border-radius: 20px;
+  background: #B5CCEF;
+  margin: 0 auto
+}
+.big-line {
+  width: 70%;
+  height: 4px;
+  border-radius: 20px;
+  background: #B5CCEF;
+  margin: 50px auto;
+}
+
+.actions {
+  border-radius: 20px;
+  box-shadow: 0 1px 6px 0 #20212447;
+  margin: 10px;
+}
+.actions-testimonial img {
+  width: 100px;
+  border-radius: 100%;
+  margin: 5px;
+}
+.actions-title {
+  font-size: 2rem;
+}
+.actions-subtitle {
+  font-weight: bold;
+}
+.actions-desc {
+  font-size: 1.1rem;
+  text-align: justify;
+}
+.actions-btn {
+  font-weight: bold;
+}
+._alert {
+  padding: 1px;
+}
+.site-footer {
+  background: #CFE2FF;
+  position: absolute;
+  width: 100%;
+  top: 100  ;
+}
+._svg {
+  width: 100%
+}
+.FAQ {
+  margin: 100px auto;
+}
+.card-text {
+  text-align: justify;
+}
+._activity {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-left: 4px solid #B5CCEF;
+  height: 900px;
+  overflow: auto; 
+}
+
+._activity-content {
+  margin-bottom: 20px;
+}
+.btn-logout {
+  background: #fd6370;
+  color: #FFFFFF;
+  border: none;
+}
+._user{
+  color: #2F2E41
+}
+.post-form {
+  max-width: 80%;
+  margin: 0 auto
+}
+._link {
+  cursor: pointer;
+}
+
+ /* #9E89C8 #330080*/
+.colorsToUse {
+  --bs-blue: #0d6efd;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #d63384;
+  --bs-red: #dc3545;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffc107;
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-cyan: #0dcaf0;
+  --bs-black: #000;
+  --bs-white: #fff;
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-gray-100: #f8f9fa;
+  --bs-gray-200: #e9ecef;
+  --bs-gray-300: #dee2e6;
+  --bs-gray-400: #ced4da;
+  --bs-gray-500: #adb5bd;
+  --bs-gray-600: #6c757d;
+  --bs-gray-700: #495057;
+  --bs-gray-800: #343a40;
+  --bs-gray-900: #212529;
+  --bs-primary: #0d6efd;
+  --bs-secondary: #6c757d;
+  --bs-success: #198754;
+  --bs-info: #0dcaf0;
+  --bs-warning: #ffc107;
+  --bs-danger: #dc3545;
+  --bs-light: #f8f9fa;
+  --bs-dark: #212529;
+  --bs-primary-rgb: 13, 110, 253;
+  --bs-secondary-rgb: 108, 117, 125;
+  --bs-success-rgb: 25, 135, 84;
+  --bs-info-rgb: 13, 202, 240;
+  --bs-warning-rgb: 255, 193, 7;
+  --bs-danger-rgb: 220, 53, 69;
+  --bs-light-rgb: 248, 249, 250;
+  --bs-dark-rgb: 33, 37, 41;
+  --bs-primary-text: #0a58ca;
+  --bs-secondary-text: #6c757d;
+  --bs-success-text: #146c43;
+  --bs-info-text: #087990;
+  --bs-warning-text: #997404;
+  --bs-danger-text: #b02a37;
+  --bs-light-text: #6c757d;
+  --bs-dark-text: #495057;
+  --bs-primary-bg-subtle: #cfe2ff;
+  --bs-secondary-bg-subtle: #f8f9fa;
+  --bs-success-bg-subtle: #d1e7dd;
+  --bs-info-bg-subtle: #cff4fc;
+  --bs-warning-bg-subtle: #fff3cd;
+  --bs-danger-bg-subtle: #f8d7da;
+  --bs-light-bg-subtle: #fcfcfd;
+  --bs-dark-bg-subtle: #ced4da;
+  --bs-primary-border-subtle: #9ec5fe;
+  --bs-secondary-border-subtle: #e9ecef;
+  --bs-success-border-subtle: #a3cfbb;
+  --bs-info-border-subtle: #9eeaf9;
+  --bs-warning-border-subtle: #ffe69c;
+  --bs-danger-border-subtle: #f1aeb5;
+  --bs-light-border-subtle: #e9ecef;
+  --bs-dark-border-subtle: #adb5bd;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 0, 0, 0;
+  --bs-body-color-rgb: 33, 37, 41;
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: #212529;
+  --bs-emphasis-color: #000;
+  --bs-emphasis-color-rgb: 0, 0, 0;
+  --bs-secondary-color: rgba(33, 37, 41, 0.75);
+  --bs-secondary-color-rgb: 33, 37, 41;
+  --bs-secondary-bg: #e9ecef;
+  --bs-secondary-bg-rgb: 233, 236, 239;
+  --bs-tertiary-color: rgba(33, 37, 41, 0.5);
+  --bs-tertiary-color-rgb: 33, 37, 41;
+  --bs-tertiary-bg: #f8f9fa;
+  --bs-tertiary-bg-rgb: 248, 249, 250;
+  --bs-body-bg: #fff;
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-link-color: #0d6efd;
+  --bs-link-color-rgb: 13, 110, 253;
+  --bs-link-decoration: underline;
+  --bs-link-hover-color: #0a58ca;
+  --bs-link-hover-color-rgb: 10, 88, 202;
+  --bs-code-color: #d63384;
+  --bs-highlight-bg: #fff3cd;
+  --bs-border-width: 1px;
+  --bs-border-style: solid;
+  --bs-border-color: #dee2e6;
+  --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+  --bs-border-radius: 0.375rem;
+  --bs-border-radius-sm: 0.25rem;
+  --bs-border-radius-lg: 0.5rem;
+  --bs-border-radius-xl: 1rem;
+  --bs-border-radius-2xl: 2rem;
+  --bs-border-radius-pill: 50rem;
+  --bs-box-shadow: 0 0.5rem 1rem rgba(var(--bs-body-color-rgb), 0.15);
+  --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(var(--bs-body-color-rgb), 0.075);
+  --bs-box-shadow-lg: 0 1rem 3rem rgba(var(--bs-body-color-rgb), 0.175);
+  --bs-box-shadow-inset: inset 0 1px 2px rgba(var(--bs-body-color-rgb), 0.075);
+  --bs-emphasis-color: #000;
+  --bs-form-control-bg: var(--bs-body-bg);
+  --bs-form-control-disabled-bg: var(--bs-secondary-bg);
+  --bs-highlight-bg: #fff3cd;
+  --bs-breakpoint-xs: 0;
+  --bs-breakpoint-sm: 576px;
+  --bs-breakpoint-md: 768px;
+  --bs-breakpoint-lg: 992px;
+  --bs-breakpoint-xl: 1200px;
+  --bs-breakpoint-xxl: 1400px;
+}

@@ -1,0 +1,274 @@
+<!-- <?php
+      session_start();
+      #echo "id: ".$_SESSION["id"];
+      if (!isset($_SESSION["user"]))
+       header("Location: sign-in-form.php?wronguserorpass=1");
+
+      //  if (isset($_GET["queryerror"]))
+      //   require("views/error/queryError/query-error.php");
+
+      // if (isset($_GET["setcolumntype"]))
+      //   require("views/set-data/column-type/set-column-type.php");
+
+      // if (isset($_GET["setdataincategory"]))
+      //   require("views/set-data/set-data-in-category/set-data-in-category.php");
+    ?> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="views/contents/style/main.css">
+  <link rel="stylesheet" href="views/style/main.css"> -->
+  <!-- <link rel="stylesheet" href="css/main.css"> -->
+  <!-- <link rel="stylesheet" href="css/animations.css"> -->
+  <!-- <link rel="stylesheet" href="views/contents/create/style/create.css"> -->
+  <link rel="stylesheet" href="./css/modal.css">
+  <link rel="stylesheet" href="cssOfBootstrap/bootstrap.css">
+  <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/post.css">
+
+  <title>x-Place</title>
+</head>
+
+<body>
+  <!-- Post Modal --->
+  <div id="modalPost" class="_modal">
+    <div class="_modal-content">
+      <div class="_modal-header _modal-flex">
+        <h2>Solicitação Enviada</h2>
+      </div>
+      <div class="_modal-body _modal-flex">
+        <img src="img/success.png" alt="Sign up success">
+        <p>O teu evento será avaliado pela nossa equipe e em pelo menos 1 dia receberás um email sobre a aprovação
+          ou desaprovação do mesmo. Obrigado.</p>
+      </div>
+      <div class="_modal-footer">
+        <a class="btnClose_a"><button class="btnClose modalPost" onclick="changeToSamePage('post.html')">OK</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post Rule Modal -->
+  <div id="modalPostsRules" class="_modal">
+    <div class="_modal-content">
+      <div class="_modal-header _modal-flex">
+        <h2>Regras de Postagens</h2>
+      </div>
+      <div class="_modal-body _modal-flex">
+        <p class="rules">
+          <i class="bi-check2-circle alert alert-danger _alert"> Não publique eventos sexualmente explícitos.</i>
+        </p>
+        <p class="rules">
+          <i class="bi-check2-circle alert alert-primary _alert"> Publique eventos que agregam valor para os cidadãos.</i>
+        </p>
+        <p class="rules">
+          <i class="bi-check2-circle alert alert-primary _alert"> Publique eventos que contibuem para a educação intelectual, social, cultutal, económica e tecnológica do ser humando.</i>
+        </p>
+        <p class="rules">
+          <i class="bi-check2-circle alert alert-primary _alert"> Publique eventos que contibuem para o desenvolvimento positivo do país.</i>
+        </p>
+
+      </div>
+      <div class="_modal-footer">
+        <a class="btnClose_a"><button class="btnClose modalPostsRules"
+            onclick="changeToSamePage('post.html')">OK</button></a>
+      </div>
+    </div>
+  </div>
+
+
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand text-primary _link" onclick="changePageWithUsername('home.html')">x-Place</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link  _link" aria-current="page"
+                onclick="changePageWithUsername('search.html')">Procurar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link _link" aria-current="page" onclick="changeToSamePage('post.html')">Postar</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <a href="logout.html" class="btn btn-sm btn-danger btn-logout ">Sair</a>
+            <div class="container ml-5">
+              <img src="img/user_20px.png" alt="">
+              <span class="_user"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container mt-5">
+    <div class="row justify-content-sm-center content">
+      <div class="col-md-6 col-sm-12 mt-5">
+
+        <p class="text-center">
+          <span class="alert alert-success _alert" role="alert">Publique um evento</sapn>
+        </p>
+        <p class="">Publique o teu evento de forma fácil e rápida, e usuários da plataforma poderão ter acesso as
+          estas informações.</p>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <img src="img/search.svg" alt="" class="img _svg">
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+
+  <div class="lineOnSearch mt-5"></div>
+
+  <!-- form -->
+  <div class="container">
+    <h1 class="text-center mt-5 mb-5">Preencha o Formulário</h1>
+    <form class="row g-3  post-form" method="post" action="getPost.html" enctype="multipart/form-data"
+      accept=".png, .jpg, .jpeg, .svg">
+      <div class="row g-2">
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control inputToCheck" id="floatingInputGrid" name="activity-theme"
+              placeholder="Tema do evento" required>
+            <label for="floatingInputGrid">Tema do evento</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <select class="form-select" id="floatingSelectGrid" name="activity-category">
+              <option value="Palestra">Palestra</option>
+              <option value="Mentoria">Mentoria</option>
+              <option value="Feira">Feira</option>
+              <option value="Evento cultural">Evento cultural</option>
+              <option value="Curso">Curso</option>
+              <option value="Concursos">Concursos</option>
+              <option value="Outro evento">Outro evento</option>
+            </select>
+            <label for="floatingSelectGrid">Categoria</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control inputToCheck" id="floatingInputGrid" name="activity-duration"
+              placeholder="Duração do evento" required>
+            <label for="floatingInputGrid">Duração do evento</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control inputToCheck" id="floatingInputGrid" name="activity-location"
+              placeholder="Localização do evento" required>
+            <label for="floatingInputGrid">Localização do evento</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="date" class="form-control inputToCheck" id="floatingInputGrid" name="activity-date"
+              placeholder="Data do evento" required>
+            <label for="floatingInputGrid">Data do evento</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="floatingInputGroup1">Imagen Promocional</label>
+          <input class="form-control" type="file" id="formFile" accept="image/*" name="activity-image">
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <textarea class="form-control inputToCheck" id="floatingTextarea" name="activity-desc"
+              placeholder="Descreva o teu evento" required></textarea>
+            <label for="floatingTextarea">Descreva o teu evento</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control inputToCheck" id="floatingInputGrid" name="activity-contact"
+              placeholder="Contactos (email e/ou telefone)" required>
+            <label for="floatingInputGrid">Contactos (email e/ou telefone)</label>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <label for="validationDefaultUsername" class="form-label">Preço</label>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend2">Grátis</span>
+                <input type="text" class="form-control" value="Grátis? clique na caixa" disabled>
+                <span class="input-group-text" id="inputGroupPrepend2">
+                  <input type="checkbox" onclick="disablePrice()">
+                </span>
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend2">Paga</span>
+                <input type="number" class="form-control price" value="0000" name="activity-price" required>
+                <span class="input-group-text" id="inputGroupPrepend2">Kz</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="button" value="Publicar" class="col-md-2 btn btn-primary" onclick="checkInputs('#modalPost')">
+
+      <div class="container alert alert-danger mt-3">Clicando em "Publicar" você estará enviado uma solicitação de
+        postagem do teu evento na plataforma, e os dados do teu evento serão avaliados pela nossa equipe a fim
+        de decidirem se podem ou não liberar a tua postagem na plataforma, para saber sobre as regras de postagem clique
+        <span class="text-primary _link" onclick="openModal('#modalPostsRules')">aqui</span>.</div>
+    </form>
+  </div>
+
+  <footer class="site-footer mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="mt-5">Redes Sociais</h3>
+          <p>
+            <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
+            <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
+            <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
+          </p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-7 text-center mb-5">
+          Copyright &copy;<script>
+            document.write(new Date().getFullYear());
+          </script> Todos os Direitos Reservados | With <i class="fa fa-heart-o" aria-hidden="true"></i> by
+          <a href="#https://fenix.com" target="_blank">
+            <span class="alert alert-primary _alert" role="alert">Fenix C.</span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="jsOfBootstrap/bootstrap.js"></script>
+  <script src="js/disablePrice.js"></script>
+  <script src="./js/getUserName.js"></script>
+  <script src="./js/changePages.js"></script>
+  <script src="./js/validationOfPost.js"></script>
+  <script src="./js/modal.js"></script>
+</body>
+
+</html>
+<!-- <i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
+  <img src="/assets/img/bootstrap.svg" alt="Bootstrap" width="32" height="32"> -->
+
+<!-- style="border:1px solid red" -->
