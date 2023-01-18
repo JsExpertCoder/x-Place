@@ -72,11 +72,58 @@
 
 <body class="text-center">
 
-  <main class="form-signin w-100 m-auto">
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <h1 class="mt-5"><span class="text-primary">x-Place</span></h1>
+        <h2>Cria e publica os teus eventos <br> de forma fácil e agradável</h2>
+      </div>
+
+      <div class="col-md-6 col-sm-12">
+        <main class="form-signin w-100 m-auto">
+          <form class="row">
+            
+            <h1 class="text-primary mb-3">Entrar</h1>
+            
+      
+            <div class="form-floating mb-2">
+              <input type="email" class="form-control userName" placeholder="Nome de usuário" id="floatingInput">
+              <label for="floatingInput" style="text-indent: 10px;">Nome de usuário</label>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Palavra-passe" required>
+              <label for="floatingPassword" style="text-indent: 10px;">Palavra-passe</label>
+            </div>
+      
+            <div class="checkbox mb-3 col-md-12">
+              <label>
+                <input type="checkbox" value="remember-me"> Relembra-me
+              </label>
+              <span>|</span>
+              <label>
+                <a href="signup.html" style="text-decoration: none;">Cadastro</a>
+              </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary submitBtn" type="button" onclick="changePageWithThis('home.html', '.userName')">Entrar</button>
+            <p class="mt-5 mb-3 text-muted">
+              &copy; 
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+            </p>
+          </form>
+        </main>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <main class="form-signin w-100 m-auto">
     <form class="row">
-      <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+      
       <h1 class="text-primary mb-3">x-Place</h1>
-      <!-- <h2 class="h3 mb-3 fw-normal">Entrar</h2> -->
+      
 
       <div class="form-floating mb-2">
         <input type="email" class="form-control userName" placeholder="Nome de usuário" id="floatingInput">
@@ -93,7 +140,7 @@
         </label>
         <span>|</span>
         <label>
-          <a href="signup.html">Cadastro</a>
+          <a href="signup.html" style="text-decoration: none;">Cadastro</a>
         </label>
       </div>
       <button class="w-100 btn btn-lg btn-primary submitBtn" type="button" onclick="changePageWithThis('home.html', '.userName')">Entrar</button>
@@ -104,7 +151,7 @@
         </script>
       </p>
     </form>
-  </main>
+  </main> -->
 
   <!-- <script src="./node_modules/js-cookie/dist/js.cookie.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
